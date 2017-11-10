@@ -1,24 +1,24 @@
 <?php
 	
 //Load includes
-include("config.php");  /// This is where your API Key is stored
+require("functions.php"); 
+require("config.php");  /// This is where your API Key is stored
 
 $sale = "";
 
-$ticket_date = preg_replace("/[^0-9-]/", "", $_POST['ticket_date']); //The date selected from the calendar
+$ticket_date = preg_replace("/[^0-9-]/", "", @$_POST['ticket_date']); //The date selected from the calendar
 
-$variations = preg_replace("/[^0-9,]/", "", $_POST['variations']); //The variations list for the selected date
+$variations = preg_replace("/[^0-9,]/", "", @$_POST['variations']); //The variations list for the selected date
 
 $variations = explode(",", $variations);
 
 foreach ( $variations as $key => $var ) {
 
-$amt = preg_replace("/[^0-9.]/", "", @$_POST['amount_'.$var]); //The amount of tickets selected for that variation by the user
-
-
-if ( $amt > 0 ) $sale.= $var."_".$amt."=";
-
-$amt = 0;
+	$amt = preg_replace("/[^0-9.]/", "", @$_POST['amount_'.$var]); //The amount of tickets selected for that variation by the user
+	
+	if ( $amt > 0 ) $sale.= $var."_".$amt."=";
+	
+	$amt = 0;
 
 }
 
