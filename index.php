@@ -8,12 +8,12 @@ include("config.php");  /// This is where your API Key is stored
 $venue_id = "165"; //Set this dynamically or to a venue id
 
 //Request data from Inzu about the selected venue
-$arguments = array("ticket_id"=>$entry_id);
+$arguments = array("venue_id"=>$entry_id);
 $inzu = INZU_GET("booking/venue", $arguments);
 
 
 //Get the booking calendar Javascript widget from Inzu (populated with venue availability)
-$arguments = array("ticket_id"=>$venue_id, "month_auto"=>"true");
+$arguments = array("venue_id"=>$venue_id, "month_auto"=>"true");
 $inzu_date_selector = INZU_GET("js/calendar/date_selector.js", $arguments, "raw");
 
 
