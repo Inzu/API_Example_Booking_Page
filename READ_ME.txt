@@ -45,12 +45,12 @@ Change the code in these files to suit your site design.
 
 FILES
 
-calendar.css - CSS styles for the booking calendar
+booking_calendar.css - CSS styles for the booking calendar
 config.php - your API account settings and some shop settings such as currency and callback URL.
 index.php - an example booking page embed.
 config.php - your API account settings and some shop settings such as currency and callback URL.
-ticket_form.js - extends the Javascript calendar widget to interact with booking form.
-ticket_process.php - formulates the booking link to forward customers to Inzu.
+booking_form.js - extends the Javascript calendar widget to interact with booking form.
+booking_process.php - formulates the booking link to forward customers to Inzu.
 
 For more information on the INZU API and to reference every API feed please visit http://developers.inzu.net or contact support@inzu.net.
 

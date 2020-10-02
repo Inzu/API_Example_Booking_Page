@@ -1,59 +1,68 @@
 <?php
 
-//Load includes
+// Load Includes
+
 include("functions.php");
-include("config.php");  /// This is where your API Key is stored
+include("config.php");  // This is where your API Key is stored
 
-//Get venue ID
-$venue_id = "165"; //Set this dynamically or to a venue id
 
-//Request data from Inzu about the selected venue
+// Get venue ID
+
+$venue_id = "165"; // Set this dynamically or to a venue id
+
+
+// Request data from Inzu about the selected venue
+
 $arguments = array("venue_id"=>$entry_id);
 $inzu = INZU_GET("booking/venue", $arguments);
 
 
-//Get the booking calendar Javascript widget from Inzu (populated with venue availability)
+// Get the booking calendar Javascript widget from Inzu (populated with venue availability)
+
 $arguments = array("venue_id"=>$venue_id, "month_auto"=>"true");
-$inzu_date_selector = INZU_GET("js/calendar/date_selector.js", $arguments, "raw");
+$inzu_calendar = INZU_GET("js/calendar/calendar.js", $arguments, "raw");
 
 
 ?>
-
 <html>
 <head>
 <link href="style.css" rel="stylesheet" type="text/css" />
-<link href="calendar.css" rel="stylesheet" type="text/css" />
+<link href="booking_calendar.css" rel="stylesheet" type="text/css" />
 </head>
 	
 <h2>Tickets</h2>
 
 <h3><?php echo $inzu->data[0]->title; ?> - <?php echo $inzu->data[0]->location; ?></h3>
-<div id="dateSelect">
+<div id="calendar">
 <script type="text/javascript">
-<?php echo $inzu_date_selector; ?>
+<?php echo $inzu_calendar; ?>
 
-//Create a new calendar instance (including availability data)
+/* 
 
-var mySelector = new INZU_dateSelector({'location':'<?php echo $loc; ?>','currency':'<?php echo $currency; ?>','targetElem':'dateSelect','forward_btn':'img/month_fwd.png','backward_btn':'img/month_bwd.png','this_month':'hide'});
+Create a new calendar instance (including availability data)
+	
+- targetElem refers to the HTML element ID where the calendar will be placed
+- calendar is extended in booking_form.js to interact with form for adding tickets
 
-//targetElem refers to the HTML element ID where the calendar will be placed 
+*/
 
-//mySelector is extended in ticket_form.js to interact with form for adding tickets
+var calendar = new INZU_calendar({'location':'<?php echo $loc; ?>','currency':'<?php echo $currency; ?>','targetElem':'calendar','forward_btn':'img/month_fwd.png','backward_btn':'img/month_bwd.png'});
+
 
 </script>
-<script type="text/javascript" src="ticket_form.js"></script>
+<script type="text/javascript" src="booking_form.js"></script>
 </div>
 
 
 <body>
 
-<div id="ticket-select" style="margin-top:16px;">
+<div id="booking-select" style="margin-top:16px;">
 
-<form action="tickets_process.php" method="post">
+<form action="booking_process.php" method="post">
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" >
 
-	<thead id="ticket-head">
+	<thead id="booking-head">
 		<tr>
 			<th align="left">Tickets</th>
 			<th width="72" align="center">Quantity</th>
@@ -61,7 +70,7 @@ var mySelector = new INZU_dateSelector({'location':'<?php echo $loc; ?>','curren
 		</tr>
 	</thead>
 	
-	<tfoot id="ticket-total">
+	<tfoot id="booking-total">
 		<tr>
 			<td align="left"></td>
 			<td align="center"><strong>Total:</strong></td>
@@ -69,7 +78,7 @@ var mySelector = new INZU_dateSelector({'location':'<?php echo $loc; ?>','curren
 		</tr>
 	</tfoot>
 	
-	<tbody id="ticket-selected">
+	<tbody id="booking-selected">
 		<tr>
 			<td align="left">Please select a date from the calendar...</td>
 			<td align="center"><input type="text" maxlength="3" style="width:20px;" /></td>
@@ -79,7 +88,7 @@ var mySelector = new INZU_dateSelector({'location':'<?php echo $loc; ?>','curren
 
 </table>
 
-<input name="ticket_date" id="ticket_date" type="hidden"  />
+<input name="booking_date" id="booking_date" type="hidden"  />
 <input name="variations" id="variations" type="hidden" />
 <input name="dateSel" id="dateSel" type="hidden" />
 <input type="submit" style="float:right;margin-top:6px;margin-bottom:6px;" />

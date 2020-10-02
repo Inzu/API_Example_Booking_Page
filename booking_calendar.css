@@ -1,0 +1,179 @@
+.calendar {
+		
+	width: 268px;
+	
+	margin-bottom: 4px;
+	padding: 2px 6px 6px 6px;
+	box-sizing: border-box;
+		
+	font-family:  Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: center;
+	color:#333333;
+	background-color: #d0d0d0;
+	border-radius: 3px;
+	border: 1px solid #AAAAAA;
+
+	
+}
+
+
+.calendar  thead  tr {
+
+	height: 28px;	
+
+}	
+
+.calendar  tfoot  tr {
+
+	height: 28px;	
+
+}	
+
+/* Title */
+
+.calendar .title {
+	
+	font-size: 13px;
+	color: #333333;
+	font-weight: bold;
+
+}
+
+
+
+/* (Mo, Tu, We, etc.) */
+
+.calendar .dayName {
+	
+	font-size: 11px;
+	background-color: #CCCCCC;
+	border: 1px solid #999999;
+	color: #000000;
+	padding:3px;
+	width: 26px;
+
+}
+
+
+/* Empty */
+
+.calendar .empty {
+	
+	border: 1px solid #999999;
+
+}
+
+
+/* Day cell */
+
+.calendar .dayCell {
+	
+	font-size: 11px;
+	border: 1px solid #969696;
+	padding: 3px;
+	border-radius: 2px;
+	background-color: #EAEAEA;
+	cursor: pointer;
+	width: 14px;
+
+}
+
+
+	.calendar .dayCell:hover {
+		
+		background-color: #aca998;
+		
+	}
+
+
+/* Today */
+
+.calendar .today {
+	
+	background-color: #FFE920;
+	border: 1px solid #AAAAAA;
+	
+}
+
+
+/* Selected */
+
+.calendar .selected, .calendar .available{
+	
+	background-color: #BEBBBB;
+	font-weight: bold;
+
+}
+
+.calendar .selected {
+	
+	background-color:#8f8d8d;
+	border: 1px solid #6f6f6f;
+	
+	cursor: pointer;
+
+}
+
+
+
+/* Controls */
+
+.calendar .nav img {
+
+	width: 19px;
+	cursor: pointer;
+	
+}
+
+.calendar .footer div {
+	
+	display: inline-block;
+	
+	padding: 3px;
+	margin-top: 4px;
+	
+	border-radius: 2px;
+	border: 1px solid #969696;
+	
+	background: linear-gradient(#dcdcdc 0%, #ffffff 100%);
+	
+	text-align: center;
+	
+	cursor: pointer;
+
+}			
+	
+	.calendar .footer div:hover {
+		
+		background: linear-gradient(#d3d3d3 0%, #ffffff 100%);
+	
+	}			
+
+.calendar .footer .thisMonth {
+	
+	width: 80px;
+	margin-right: 2px;
+
+}		
+
+.calendar .footer .close {
+	
+	width: 48px;
+
+}		
+
+
+
+/* sold out days */
+
+[data-sale="0"]{
+	
+	border: 1px solid #808080 !important;
+	background: #808080;
+	color:#CCCCCC;
+
+}
+
+
+
