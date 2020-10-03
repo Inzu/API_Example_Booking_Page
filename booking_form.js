@@ -9,17 +9,13 @@ IMPORTANT - This file uses US Dollars for prices please change the &#36; currenc
 */
 
 
-// Extend selectDate prototype to update form with selected tickets from calendar
+// Extend selectDate prototype to update form with a selected date from calendar
 
 calendar.selectDate = function(dayElement, year, month, day) {
 
 this.day = day;
 
-
-// Allow selection only on dates that exist this month
-
 if ( dayElement.classList.contains("available") || dayElement.classList.contains( "selected") ) {
-
 
 	// Delete all previously selected tickets from order form
 	
@@ -29,28 +25,22 @@ if ( dayElement.classList.contains("available") || dayElement.classList.contains
 	
 	}
 	
-	
 	var day_sel = this.selectedDates[this.year][this.month][this.day].dateVariationsData;
-	
 	
 	// Create list of variations available on this day
 	
 	var variations_list = "";
 	
-	
-	// Loop through list of variations and check availability for selected day
+	// Loop through list of variations and check availability for the selected day
 	
 	for ( var variation in day_sel ) {
-	
-	
-		variations_list += variation + ",";
 		
+		variations_list += variation + ",";
 		
 		// Check if date is sold out
 		
 		var day_sold = day_sel[variation].info.sold;
-		
-		
+			
 		// Add variation info to order form when availability exists
 		
 		var tBody = document.getElementById("booking-selected");
@@ -66,22 +56,19 @@ if ( dayElement.classList.contains("available") || dayElement.classList.contains
 		
 		newRow = tBody.insertRow(-1);
 	
-	
 		// Variation title
 		
 		td1 = newRow.insertCell(-1);
 		td1.setAttribute("id" ,"booking-title");
 		td1.innerHTML = this.venue.data[0].title + " - " + this.variations[variation].type_title ;
-		
-		
+			
 		// Quantity form fields
 		
 		td2 = newRow.insertCell(-1);
 		td2.setAttribute("id", "highlight");
 		td2.setAttribute("align", "center");
 		td2.innerHTML='<input id="amount_'+variation+'" name="amount_'+variation+'" type="text" value="" maxlength="3" style="width:20px;" onkeyup="calendar.adjustTotal();"  />';
-		
-		
+				
 		// Variation price form fields
 		
 		if ( this.variations[variation].free_entry ) {
@@ -101,18 +88,13 @@ if ( dayElement.classList.contains("available") || dayElement.classList.contains
 		td3.innerHTML = user_price+'<input id="price_'+variation+'" type="hidden" value="'+price+'" />';
 		
 		}
-		
-	
-	
 	
 	}
-	
-	
+		
 	// Highlight selected date
 	
 	dayElement.classList.toggle("selected");
-	
-	
+		
 	// Deselect last chosen date
 	
 	if (typeof this.lastSelected !== "undefined" && this.lastSelectedMonth == this.month ) {
@@ -120,35 +102,28 @@ if ( dayElement.classList.contains("available") || dayElement.classList.contains
 		document.getElementById(this.lastSelected).classList.toggle("selected");
 	
 	}
-	
-	
+		
 	// Set selected date and month as 'last selected'
 	
 	this.lastSelected = dayElement.id;
 	this.lastSelectedMonth = this.month;
-	
-	
+		
 	// Set hidden form values
 	
 	document.getElementById('booking_date').value = this.year + "-" + this.month + "-" + this.day;
 	document.getElementById("variations").value = variations_list.slice(0, -1);
 	
-	
 	// Reset the amount to pay total
 	
 	this.adjustTotal();
 
-
 }
-
 
 // This extends the existing prototype
 
 return INZU_calendar.prototype.selectDate.apply(this, arguments);
 
-
 }
-
 
 // Adjust order totals when user chooses a number of tickets
 
@@ -157,15 +132,12 @@ calendar.adjustTotal = function adjustTotal(resetTotal){
 var total = 0;
 var amount_selected = 0;
 
-
-
 if ( !resetTotal ) {
 
 // Create total by each available variation for the selected date
 
 	for ( var variation in this.variations ) {
-		
-		
+				
 	// Get amount selected for available variation
 	
 	if ( document.getElementById('amount_' + variation) !== null ) {
@@ -182,7 +154,6 @@ if ( !resetTotal ) {
 	}
 
 }
-
 
 total = Math.round( total * 100 ) / 100; 
 total = total.toFixed(2);

@@ -1,3 +1,5 @@
+/* Calendar */
+
 .calendar {
 		
 	width: 268px;
@@ -17,18 +19,17 @@
 	
 }
 
-
-.calendar  thead  tr {
-
-	height: 28px;	
-
-}	
-
-.calendar  tfoot  tr {
-
-	height: 28px;	
-
-}	
+	.calendar  thead  tr {
+	
+		height: 28px;	
+	
+	}	
+	
+	.calendar  tfoot  tr {
+	
+		height: 28px;	
+	
+	}	
 
 /* Title */
 
@@ -39,8 +40,6 @@
 	font-weight: bold;
 
 }
-
-
 
 /* (Mo, Tu, We, etc.) */
 
@@ -55,7 +54,6 @@
 
 }
 
-
 /* Empty */
 
 .calendar .empty {
@@ -63,7 +61,6 @@
 	border: 1px solid #999999;
 
 }
-
 
 /* Day cell */
 
@@ -79,13 +76,11 @@
 
 }
 
-
 	.calendar .dayCell:hover {
 		
 		background-color: #aca998;
 		
 	}
-
 
 /* Today */
 
@@ -106,17 +101,15 @@
 
 }
 
-.calendar .selected {
+	.calendar .selected {
+		
+		background-color:#8f8d8d;
+		border: 1px solid #6f6f6f;
+		
+		cursor: pointer;
 	
-	background-color:#8f8d8d;
-	border: 1px solid #6f6f6f;
+	}
 	
-	cursor: pointer;
-
-}
-
-
-
 /* Controls */
 
 .calendar .nav img {
@@ -163,8 +156,6 @@
 
 }		
 
-
-
 /* sold out days */
 
 [data-sale="0"]{
@@ -174,6 +165,3 @@
 	color:#CCCCCC;
 
 }
-
-
-

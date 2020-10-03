@@ -1,4 +1,3 @@
-
 /*
 \---------------------------------------------------------------------------/
 | Inzu API                                                                  |
@@ -22,7 +21,6 @@
 | Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA |
 /---------------------------------------------------------------------------\
 */
-
 
 
 FOREWORD
@@ -53,6 +51,3 @@ booking_form.js - extends the Javascript calendar widget to interact with bookin
 booking_process.php - formulates the booking link to forward customers to Inzu.
 
 For more information on the Inzu API and to reference every API feed please visit http://developers.inzu.net or contact support@inzu.net.
-
-
-
